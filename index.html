@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2BWayClub — Руководство поставщика / 供应商指南 / Supplier Guide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #fff;
+  }
+
+  /* ── Language switcher (screen only) ── */
+  .lang-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: #1a1a2e;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 32px;
+  }
+  .lang-nav span { color: #aaa; font-size: 12px; margin-right: 4px; }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #ccc;
+    padding: 4px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.15s;
+  }
+  .lang-btn.active, .lang-btn:hover {
+    background: #e8c96b;
+    border-color: #e8c96b;
+    color: #1a1a2e;
+    font-weight: 600;
+  }
+
+  /* ── Sections ── */
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+
+  /* ── Cover ── */
+  .cover {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    color: #fff;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 64px 48px;
+  }
+  .cover .logo-row {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #e8c96b;
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .cover .sub {
+    font-size: 13px;
+    color: #aab;
+  }
+
+  /* ── Body wrapper ── */
+  .body-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 48px 64px;
+  }
+
+  /* ── Intro ── */
+  .intro-box {
+    background: #f7f9fc;
+    border-left: 4px solid #e8c96b;
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin-bottom: 36px;
+    font-size: 13px;
+    color: #333;
+  }
+
+  /* ── TOC ── */
+  .toc { margin-bottom: 40px; }
+  .toc h2 { font-size: 14px; font-weight: 700; color: #555; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 4px; color: #1a4a8a; }
+
+  /* ── Steps ── */
+  .step {
+    margin-bottom: 40px;
+    page-break-inside: avoid;
+  }
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e8c96b;
+  }
+  .step-num {
+    background: #1a1a2e;
+    color: #e8c96b;
+    font-weight: 800;
+    font-size: 15px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+
+  /* ── Field table ── */
+  .field-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .field-table th {
+    background: #f0f2f5;
+    color: #555;
+    font-weight: 600;
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 2px solid #dde;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .field-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eef;
+    vertical-align: top;
+  }
+  .field-table tr:hover td { background: #fafbff; }
+  .field-name { font-weight: 600; color: #1a1a2e; }
+  .required { color: #c0392b; font-size: 10px; font-weight: 700; vertical-align: top; }
+  .optional { color: #7f8c8d; font-size: 10px; font-weight: 500; vertical-align: top; }
+  .field-note { color: #7f8c8d; font-size: 11px; font-style: italic; }
+  .choices-list { color: #2c3e50; }
+  .choices-list code {
+    background: #eef;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 11px;
+    font-family: inherit;
+  }
+  .moderator-only {
+    display: inline-block;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    color: #856404;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  /* ── Info block ── */
+  .info-block {
+    background: #eaf4fb;
+    border-left: 3px solid #2980b9;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin: 12px 0 16px;
+    font-size: 12px;
+    color: #1a3a5c;
+  }
+  .warning-block {
+    background: #fff8e1;
+    border-left: 3px solid #f39c12;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin: 12px 0 16px;
+    font-size: 12px;
+    color: #7d4e00;
+  }
+  .danger-block {
+    background: #fff0f0;
+    border: 2px solid #c0392b;
+    border-left: 6px solid #c0392b;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 18px 0 24px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #5c0f10;
+  }
+  .danger-block strong { color: #c0392b; }
+  .danger-block .danger-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    color: #c0392b;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .danger-block.top-danger {
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+
+  /* ── Flow diagram ── */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 20px 0 32px;
+    align-items: stretch;
+  }
+  .flow-item {
+    flex: 1;
+    min-width: 110px;
+    background: #fff;
+    border: 1px solid #dde;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 11px;
+    position: relative;
+  }
+  .flow-item:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e8c96b;
+    font-size: 16px;
+    z-index: 1;
+  }
+  .flow-num {
+    display: block;
+    background: #e8c96b;
+    color: #1a1a2e;
+    font-weight: 800;
+    font-size: 13px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    line-height: 24px;
+    margin: 0 auto 6px;
+  }
+  .flow-label { color: #2c3e50; font-weight: 600; font-size: 11px; }
+
+  /* ── After-submit section ── */
+  .what-next {
+    background: #f0fff4;
+    border: 1px solid #b7e4c7;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 32px;
+  }
+  .what-next h3 { font-size: 14px; font-weight: 700; color: #1a5c2e; margin-bottom: 10px; }
+  .what-next ol { padding-left: 18px; font-size: 12.5px; color: #1a3a2e; }
+  .what-next ol li { margin-bottom: 6px; }
+
+  /* ── Footer ── */
+  .doc-footer {
+    border-top: 1px solid #eee;
+    margin-top: 48px;
+    padding-top: 16px;
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* ── Visual flow section ── */
+  .visual-flow-section {
+    margin: 0 0 48px;
+  }
+  .visual-flow-section h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8c96b;
+  }
+
+  /* Journey timeline */
+  .journey {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .journey-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 20px;
+    position: relative;
+  }
+
+  /* Left column: dot + line */
+  .journey-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .journey-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1a1a2e;
+    color: #e8c96b;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+    position: relative;
+  }
+  .journey-dot.done   { background: #27ae60; color: #fff; }
+  .journey-dot.wait   { background: #f39c12; color: #fff; }
+  .journey-dot.finish { background: #2980b9; color: #fff; }
+
+  .journey-line {
+    width: 2px;
+    flex: 1;
+    background: #dde;
+    min-height: 24px;
+  }
+  .journey-item:last-child .journey-line { display: none; }
+
+  /* Right column: card */
+  .journey-card {
+    padding: 0 0 32px;
+  }
+  .journey-card-inner {
+    border: 1px solid #e0e4ee;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Browser chrome bar */
+  .browser-bar {
+    background: #f0f2f5;
+    border-bottom: 1px solid #dde;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .browser-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .browser-dot:nth-child(1) { background: #ff5f57; }
+  .browser-dot:nth-child(2) { background: #febc2e; }
+  .browser-dot:nth-child(3) { background: #28c840; }
+  .browser-url {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #ccd;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 11px;
+    color: #666;
+    margin-left: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* Screenshot placeholder area */
+  .screenshot-area {
+    background: #f8f9fb;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .screenshot-area img {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 12px auto;
+  }
+  .screenshot-area:has(img) .screenshot-placeholder {
+    display: none;
+  }
+  .screenshot-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #9aa;
+    padding: 24px;
+    text-align: center;
+  }
+  .screenshot-placeholder svg {
+    opacity: 0.35;
+  }
+  .screenshot-placeholder .ph-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8899aa;
+  }
+  .screenshot-placeholder .ph-hint {
+    font-size: 11px;
+    color: #aab;
+    font-style: italic;
+  }
+
+  /* Card description */
+  .journey-desc {
+    padding: 14px 16px;
+    border-top: 1px solid #eef;
+    background: #fff;
+  }
+  .journey-desc-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .journey-desc-text {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+  }
+  .journey-desc-action {
+    display: inline-block;
+    margin-top: 8px;
+    background: #1a1a2e;
+    color: #e8c96b;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .journey-desc-action.green  { background: #27ae60; color: #fff; }
+  .journey-desc-action.amber  { background: #f39c12; color: #fff; }
+  .journey-desc-action.blue   { background: #2980b9; color: #fff; }
+
+  /* ── Print ── */
+  @media print {
+    .lang-nav { display: none !important; }
+    .lang-section { display: none !important; }
+    .lang-section.print-include { display: block !important; }
+    body { padding-top: 0; }
+    .cover { min-height: 160px; padding: 40px; }
+    .step { page-break-inside: avoid; }
+    .body-wrap { padding: 24px 40px; }
+    .flow-item:not(:last-child)::after { display: none; }
+  }
+
+  @media screen {
+    body { padding-top: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="lang-nav">
+  <span>Язык / Language / 语言:</span>
+  <button class="lang-btn active" onclick="showLang('ru')">Русский</button>
+  <button class="lang-btn" onclick="showLang('zh')">中文</button>
+  <button class="lang-btn" onclick="showLang('en')">English</button>
+</nav>
+
+<!-- ══════════════════════════════ RUSSIAN ══════════════════════════════ -->
+<div class="lang-section active print-include" id="lang-ru">
+
+  <div class="cover">
+    <div class="logo-row">B2BWAYCLUB</div>
+    <h1>Руководство поставщика: пошаговая регистрация</h1>
+    <div class="sub">Китайские поставщики → казахстанские покупатели &nbsp;|&nbsp; Версия 1.0</div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="intro-box">
+      Это руководство поможет вам пройти регистрацию на платформе B2BWayClub и заполнить профиль компании.
+      Регистрация состоит из <strong>6 шагов</strong>. Каждый шаг можно сохранить и вернуться позже —
+      данные не теряются. После заполнения всех шагов отправьте профиль на модерацию.
+    </div>
+
+    <div class="danger-block top-danger">
+      <span class="danger-title">⚠️ Важно: контакты — только через B2BWayClub</span>
+      Все обращения от покупателей идут <strong>исключительно через модераторов B2BWayClub</strong>.
+      <strong>Категорически запрещено</strong> указывать телефоны, email, WeChat, QQ, WhatsApp,
+      Telegram, адреса сайтов, QR-коды и любые другие способы прямой связи в публичных полях профиля:
+      в названиях и описаниях продуктов, подписях, на фотографиях и видео, в логотипах и водяных знаках.
+      Профили и материалы с нарушением этого правила <strong>возвращаются на доработку или отклоняются</strong>.
+    </div>
+
+    <!-- ── VISUAL FLOW ── -->
+    <div class="visual-flow-section">
+      <h2>Как проходит регистрация</h2>
+      <div class="journey">
+
+        <!-- 1. Signup -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">1</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/signup/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_01_signup.png" alt="Регистрация">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                  <div class="ph-label">Скриншот: форма регистрации</div>
+                  <div class="ph-hint">Заполните форму и создайте аккаунт</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Зарегистрируйтесь самостоятельно</div>
+                <div class="journey-desc-text">Перейдите на страницу регистрации и заполните форму: <strong>Логин для входа</strong>, Email, Название компании, Пароль и Подтверждение пароля.
+                  <br><br>
+                  <strong>Логин для входа</strong> — это короткое имя, которое вы будете использовать при входе в систему (например, <em>shenzhen-tree</em>). Он отличается от email и должен быть уникальным. Email используется отдельно — для уведомлений и связи с модератором.
+                  <br><br>
+                  После отправки формы аккаунт создаётся сразу. На вашу почту придёт письмо с подтверждением регистрации.</div>
+                <span class="journey-desc-action">→ Нажмите «Отправить заявку»</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Sign in -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">2</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/login/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_02_login.png" alt="Вход в систему">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                  <div class="ph-label">Скриншот: страница входа</div>
+                  <div class="ph-hint">Введите логин и пароль, нажмите «Войти»</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Войдите в систему</div>
+                <div class="journey-desc-text">Перейдите на страницу входа и авторизуйтесь, используя <strong>логин</strong> и <strong>пароль</strong>, указанные при регистрации. После входа платформа сама направит вас к следующему шагу.</div>
+                <span class="journey-desc-action">→ Нажмите «Войти»</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Accept agreement -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">3</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/agreement/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_03_agreement.png" alt="Соглашение поставщика">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <div class="ph-label">Скриншот: соглашение поставщика</div>
+                  <div class="ph-hint">Ознакомьтесь и нажмите «Принять соглашение»</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Примите соглашение поставщика</div>
+                <div class="journey-desc-text">При первом входе откроется страница <strong>«Соглашение поставщика»</strong>. Внимательно прочитайте условия — главное правило: <strong>все контакты с покупателями только через модераторов B2BWayClub</strong>; в публичных полях профиля, документах и фото нельзя размещать прямые контакты. Нажмите кнопку <strong>«Принять соглашение»</strong> — после этого откроется мастер заполнения анкеты.</div>
+                <span class="journey-desc-action">→ Нажмите «Принять соглашение»</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Wizard steps -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">4</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/wizard/1/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_04_wizard.png" alt="Мастер заполнения">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <div class="ph-label">Скриншот: заполнение анкеты (шаги 1–6)</div>
+                  <div class="ph-hint">Заполните все поля и нажмите «Сохранить и продолжить»</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Заполните анкету — шаги 1–6</div>
+                <div class="journey-desc-text">После входа в систему последовательно заполните все 6 шагов: основная информация, профиль, производство, продукты, документы, медиа. На каждом шаге нажимайте <strong>«Сохранить и продолжить»</strong>. Данные сохраняются — можно вернуться и исправить.</div>
+                <span class="journey-desc-action">→ Заполните шаги 1–6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Submit -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot done">✓</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/wizard/6/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_05_submit.png" alt="Отправка на модерацию">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  <div class="ph-label">Скриншот: кнопка «Отправить на модерацию»</div>
+                  <div class="ph-hint">На последнем шаге нажмите кнопку отправки</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Отправьте профиль на проверку</div>
+                <div class="journey-desc-text">После загрузки медиа на шаге 6 прокрутите вниз и нажмите кнопку <strong>«Отправить на модерацию»</strong>. Это обязательно — без этого действия профиль не уйдёт на проверку.</div>
+                <span class="journey-desc-action green">✓ Нажмите «Отправить на модерацию»</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Waiting profile review -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot wait">…</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_06_pending_profile.png" alt="Ожидание проверки профиля">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div class="ph-label">Скриншот: статус «На проверке»</div>
+                  <div class="ph-hint">Профиль ожидает проверки модератором</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Ожидайте проверки профиля</div>
+                <div class="journey-desc-text">Профиль получает статус <strong>«На проверке»</strong>. Модератор проверяет все поля, документы и медиа. Если потребуются правки — вы получите уведомление с комментариями и сможете внести изменения.</div>
+                <span class="journey-desc-action amber">⏳ Срок проверки: 2–5 рабочих дней</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Approved -->
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot finish">★</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/ru_07_approved.png" alt="Профиль одобрен">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <div class="ph-label">Скриншот: статус «Одобрен»</div>
+                  <div class="ph-hint">Профиль виден казахстанским покупателям</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Профиль одобрен — вы на платформе!</div>
+                <div class="journey-desc-text">После одобрения статус меняется на <strong>«Одобрен»</strong>. Ваш профиль и продукты становятся видны покупателям из Казахстана. Поздравляем!</div>
+                <span class="journey-desc-action blue">★ Готово — профиль виден покупателям</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /journey -->
+    </div><!-- /visual-flow-section -->
+
+    <div class="toc">
+      <h2>Содержание</h2>
+      <ol>
+        <li>Основная информация о компании</li>
+        <li>Публичный профиль</li>
+        <li>Производство и торговля</li>
+        <li>Продукты</li>
+        <li>Документы</li>
+        <li>Медиа и отправка на модерацию</li>
+      </ol>
+    </div>
+
+    <div class="flow">
+      <div class="flow-item"><span class="flow-num">1</span><div class="flow-label">Основная инфо</div></div>
+      <div class="flow-item"><span class="flow-num">2</span><div class="flow-label">Публичный профиль</div></div>
+      <div class="flow-item"><span class="flow-num">3</span><div class="flow-label">Производство</div></div>
+      <div class="flow-item"><span class="flow-num">4</span><div class="flow-label">Продукты</div></div>
+      <div class="flow-item"><span class="flow-num">5</span><div class="flow-label">Документы</div></div>
+      <div class="flow-item"><span class="flow-num">6</span><div class="flow-label">Медиа → Отправка</div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Основная информация о компании</div>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Поле</th><th>Что вводить</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Название на китайском <span class="required">★</span></td><td>Официальное название компании на китайском языке. Пример: <em>树木科技有限公司</em></td></tr>
+          <tr><td class="field-name">Название на английском <span class="required">★</span></td><td>Официальное название компании на английском. Пример: <em>Tree Technology Co., Ltd.</em></td></tr>
+          <tr><td class="field-name">Полное юр. название <span class="required">★</span></td><td>Полное наименование из регистрационных документов, включая организационно-правовую форму.</td></tr>
+          <tr><td class="field-name">Регистрационный номер <span class="optional">необяз.</span></td><td>Номер государственной регистрации компании (свидетельство о регистрации).</td></tr>
+          <tr><td class="field-name">Страна <span class="required">★</span></td><td>Страна регистрации компании. Большинство поставщиков — Китай.</td></tr>
+          <tr><td class="field-name">Город / провинция <span class="required">★</span></td><td>Город и/или провинция расположения компании. Пример: <em>Шэньчжэнь, Гуандун</em></td></tr>
+          <tr><td class="field-name">Адрес производства <span class="optional">необяз.</span></td><td>Фактический адрес производственного объекта, если отличается от юридического адреса.</td></tr>
+          <tr><td class="field-name">Год основания <span class="optional">необяз.</span></td><td>Год, когда была основана компания. Только число, например: <em>2005</em></td></tr>
+          <tr><td class="field-name">Тип компании <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>Производитель</code> — производит товары самостоятельно<br>
+              <code>Торговая компания</code> — перепродаёт товары<br>
+              <code>OEM</code> — производит по чужому дизайну/бренду<br>
+              <code>ODM</code> — разрабатывает и производит под заказ<br>
+              <code>Бренд</code> — владелец торговой марки
+            </div>
+          </td></tr>
+          <tr><td class="field-name">Язык заполнения <span class="required">★</span></td><td>Язык, на котором вы заполняете анкету (китайский, английский, русский, казахский). Определяет язык оригинала для авто-перевода.</td></tr>
+          <tr><td class="field-name">Телефон представителя <span class="moderator-only">только модератору</span></td><td>Телефон контактного лица для связи с модератором. Не публикуется на платформе.</td></tr>
+          <tr><td class="field-name">WeChat / Tencent ID <span class="moderator-only">только модератору</span></td><td>ID в WeChat или Tencent для оперативной связи с модератором. Не публикуется.</td></tr>
+          <tr><td class="field-name">Email <span class="moderator-only">только модератору</span></td><td>Email контактного лица. Используется модератором, не публикуется.</td></tr>
+          <tr><td class="field-name">Основная категория <span class="required">★</span></td><td>Выберите одну основную категорию товаров из списка. Это определяет доступные подкатегории.</td></tr>
+          <tr><td class="field-name">Подкатегории <span class="required">★</span></td><td>Выберите 1–5 подкатегорий в рамках основной категории. Подкатегории, выбранные здесь, доступны при добавлении продуктов.</td></tr>
+          <tr><td class="field-name">Не нашли категорию? <span class="optional">необяз.</span></td><td>Опишите вашу категорию товаров в свободной форме. Модератор самостоятельно добавит подходящую категорию.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">Публичный профиль</div>
+      </div>
+      <div class="info-block">Информация на этом шаге будет видна покупателям на платформе. Пишите на языке заполнения — платформа автоматически переведёт текст.</div>
+      <table class="field-table">
+        <thead><tr><th>Поле</th><th>Что вводить</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Краткое описание <span class="required">★</span></td><td>1–3 предложения о компании: что производите, где находитесь, ключевые преимущества. Отображается в списке поставщиков.</td></tr>
+          <tr><td class="field-name">Подробное описание <span class="required">★</span></td><td>Полное описание компании: история, специализация, рынки сбыта, преимущества перед конкурентами. Рекомендуется 150–400 слов.</td></tr>
+          <tr><td class="field-name">Логотип <span class="optional">необяз.</span></td><td>Логотип компании в формате PNG или JPG. Рекомендуемый размер: минимум 300×300 пикселей, квадратный формат.</td></tr>
+          <tr><td class="field-name">Сайт <span class="optional">необяз.</span></td><td>Официальный сайт компании. Начинайте с <em>https://</em></td></tr>
+          <tr><td class="field-name">Основные направления продукции <span class="required">★</span></td><td>Перечислите ключевые виды продукции, которые вы производите или продаёте. Можно несколько строк.</td></tr>
+          <tr><td class="field-name">Топ-5 продуктов для Казахстана <span class="required">★</span></td><td>Укажите 5 продуктов, которые, по вашему мнению, наиболее востребованы на казахстанском рынке. Учитывайте местный спрос и климат.</td></tr>
+          <tr><td class="field-name">Цели на платформе <span class="required">★</span></td><td>
+            <div class="choices-list">Отметьте все подходящие варианты:<br>
+              <code>Найти дистрибьютора</code> &nbsp;
+              <code>Найти оптовых покупателей</code><br>
+              <code>Найти OEM-заказы</code> &nbsp;
+              <code>Найти партнёра по локализации</code><br>
+              <code>Найти сервисного партнёра</code>
+            </div>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Производство и торговля</div>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Поле</th><th>Что вводить</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Количество сотрудников <span class="optional">необяз.</span></td><td><code>&lt;10</code> &nbsp; <code>10–50</code> &nbsp; <code>50–200</code> &nbsp; <code>200–500</code> &nbsp; <code>500–1000</code> &nbsp; <code>1000+</code></td></tr>
+          <tr><td class="field-name">Годовая выручка <span class="optional">необяз.</span></td><td><code>&lt;1M USD</code> &nbsp; <code>1–5M</code> &nbsp; <code>5–20M</code> &nbsp; <code>20–100M</code> &nbsp; <code>100M+</code></td></tr>
+          <tr><td class="field-name">Производственная площадь (м²) <span class="optional">необяз.</span></td><td>Общая площадь производственных помещений в квадратных метрах. Только число.</td></tr>
+          <tr><td class="field-name">Производственная мощность <span class="optional">необяз.</span></td><td>Описание объёма производства: сколько единиц в месяц/год по основным позициям.</td></tr>
+          <tr><td class="field-name">Оборудование и технологии <span class="optional">необяз.</span></td><td>Описание ключевого производственного оборудования, используемых технологий, степени автоматизации.</td></tr>
+          <tr><td class="field-name">Количество производственных линий <span class="optional">необяз.</span></td><td>Число производственных линий. Только число.</td></tr>
+          <tr><td class="field-name">OEM доступен <span class="optional">необяз.</span></td><td>Отметьте, если готовы производить продукцию под брендом заказчика.</td></tr>
+          <tr><td class="field-name">ODM доступен <span class="optional">необяз.</span></td><td>Отметьте, если готовы разрабатывать и производить продукцию по техническому заданию заказчика.</td></tr>
+          <tr><td class="field-name">OEM MOQ <span class="optional">необяз.</span></td><td>Минимальный объём заказа для OEM-производства (в единицах).</td></tr>
+          <tr><td class="field-name">Единицы MOQ <span class="optional">необяз.</span></td><td>Единица измерения минимального заказа: шт., кг, комплект и т. п.</td></tr>
+          <tr><td class="field-name">Минимальная сумма заказа <span class="optional">необяз.</span></td><td>Минимальная сумма одного заказа в выбранной валюте. Только число.</td></tr>
+          <tr><td class="field-name">Валюта <span class="optional">необяз.</span></td><td><code>CNY</code> &nbsp; <code>USD</code> &nbsp; <code>EUR</code></td></tr>
+          <tr><td class="field-name">Условия оплаты <span class="optional">необяз.</span></td><td>Отметьте все принимаемые способы оплаты:<br><code>T/T</code> &nbsp; <code>L/C</code> &nbsp; <code>Alipay</code> &nbsp; <code>PayPal</code> &nbsp; <code>Western Union</code> &nbsp; <code>Escrow</code></td></tr>
+          <tr><td class="field-name">Предоплата % <span class="optional">необяз.</span></td><td>Размер предоплаты в процентах. Например: <em>30</em></td></tr>
+          <tr><td class="field-name">Условия поставки <span class="optional">необяз.</span></td><td>Отметьте поддерживаемые условия Инкотермс:<br><code>EXW</code> — самовывоз со склада &nbsp; <code>FOB</code> — до борта судна<br><code>CIF</code> — стоимость + страховка + фрахт &nbsp; <code>DDP</code> — с доставкой и оплатой пошлин</td></tr>
+          <tr><td class="field-name">Порты отгрузки <span class="optional">необяз.</span></td><td>Укажите порты, через которые обычно отгружается продукция. Пример: <em>Гуанчжоу, Шанхай</em></td></tr>
+          <tr><td class="field-name">Доставка до Казахстана <span class="optional">необяз.</span></td><td>Отметьте, если организуете доставку непосредственно до адреса в Казахстане.</td></tr>
+          <tr><td class="field-name">Склад в СНГ <span class="optional">необяз.</span></td><td>Отметьте, если у вас есть склад на территории стран СНГ.</td></tr>
+          <tr><td class="field-name">Расположение склада в СНГ <span class="optional">необяз.</span></td><td>Укажите город и страну склада в СНГ, если он есть.</td></tr>
+          <tr><td class="field-name">Дилер в Казахстане <span class="optional">необяз.</span></td><td>Отметьте, если у вас есть официальный дилер или дистрибьютор в Казахстане.</td></tr>
+          <tr><td class="field-name">Гарантия и обслуживание <span class="optional">необяз.</span></td><td>Отметьте, если предоставляете гарантийное обслуживание продукции.</td></tr>
+          <tr><td class="field-name">Запасные части <span class="optional">необяз.</span></td><td>Отметьте, если доступны запасные части для вашей продукции.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Продукты</div>
+      </div>
+      <div class="info-block">Добавьте каждый продукт отдельно. Нажмите «Сохранить и продолжить» — форма добавит продукт и откроется снова для следующего. Добавьте минимум 1 продукт.</div>
+
+      <div class="danger-block">
+        <span class="danger-title">⚠️ Без контактных данных в продуктах</span>
+        В <strong>названии, описании, технических характеристиках и вариантах упаковки</strong> продукта
+        <strong>запрещено указывать</strong> телефоны, email, WeChat, QQ, WhatsApp, Telegram, мессенджеры,
+        адреса сайтов и QR-коды. Все контакты с покупателями — <strong>только через модераторов B2BWayClub</strong>.
+        Продукты с прямыми контактами возвращаются на доработку.
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Поле</th><th>Что вводить</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Название продукта <span class="required">★</span></td><td>Официальное название продукта или линейки. Пример: <em>Промышленный светодиодный светильник серии A200</em></td></tr>
+          <tr><td class="field-name">Основная категория</td><td>Заполняется автоматически из шага 1. Редактировать нельзя.</td></tr>
+          <tr><td class="field-name">Подкатегория <span class="required">★</span></td><td>Выберите подкатегорию из тех, что добавлены в шаге 1. Если нужной нет — отметьте чекбокс ниже.</td></tr>
+          <tr><td class="field-name">Нет моей подкатегории — введу вручную <span class="optional">необяз.</span></td><td>Отметьте, если нужной подкатегории нет в списке. Тогда поле «Подкатегория» скроется и появится текстовое поле для описания.</td></tr>
+          <tr><td class="field-name">Описание продукта <span class="required">★</span></td><td>Подробное описание: назначение, применение, особенности. Рекомендуется 50–200 слов.</td></tr>
+          <tr><td class="field-name">Технические характеристики <span class="optional">необяз.</span></td><td>Технические параметры продукта: мощность, размеры, материал, стандарты и т. п.</td></tr>
+          <tr><td class="field-name">MOQ (мин. заказ) <span class="optional">необяз.</span></td><td>Минимальное количество для заказа этого продукта. Число + единица (шт., кг и т. д.)</td></tr>
+          <tr><td class="field-name">Минимальная сумма заказа <span class="optional">необяз.</span></td><td>Минимальная стоимость одного заказа данного продукта.</td></tr>
+          <tr><td class="field-name">Валюта <span class="optional">необяз.</span></td><td><code>CNY</code> &nbsp; <code>USD</code> &nbsp; <code>EUR</code></td></tr>
+          <tr><td class="field-name">Условия поставки <span class="optional">необяз.</span></td><td><code>EXW</code> &nbsp; <code>FOB</code> &nbsp; <code>CIF</code> &nbsp; <code>DDP</code></td></tr>
+          <tr><td class="field-name">OEM возможен <span class="optional">необяз.</span></td><td>Отметьте, если данный продукт доступен в OEM-варианте.</td></tr>
+          <tr><td class="field-name">ODM возможен <span class="optional">необяз.</span></td><td>Отметьте, если данный продукт доступен в ODM-варианте.</td></tr>
+          <tr><td class="field-name">Варианты упаковки <span class="optional">необяз.</span></td><td>Описание доступных вариантов упаковки: размеры коробки, вес, количество в коробке и т. п.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Документы</div>
+      </div>
+      <div class="info-block">Загрузите документы, подтверждающие деятельность компании. Каждый документ загружается отдельно. Рекомендуется загрузить как минимум бизнес-лицензию.</div>
+      <table class="field-table">
+        <thead><tr><th>Поле</th><th>Что вводить</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Тип документа <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>Бизнес-лицензия</code> — основной документ регистрации компании<br>
+              <code>Лицензия на экспорт</code> — разрешение на ведение экспортной деятельности<br>
+              <code>Сертификат качества</code> — ISO, ГОСТ и аналогичные<br>
+              <code>Сертификат продукта</code> — сертификат на конкретный вид продукции<br>
+              <code>Каталог продукции</code> — общий или по категориям<br>
+              <code>Прайс-лист</code> — таблица цен<br>
+              <code>Презентация компании</code> — презентация о компании<br>
+              <code>Брошюра</code> — маркетинговый материал<br>
+              <code>Образцы упаковки</code> — описание упаковки<br>
+              <code>Рекомендательное письмо</code>
+            </div>
+          </td></tr>
+          <tr><td class="field-name">Видимость <span class="required">★</span></td><td>
+            <code>Публичный</code> — виден покупателям<br>
+            <code>Только внутри</code> — виден только модераторам<br>
+            <code>Ограниченный</code> — по запросу
+          </td></tr>
+          <tr><td class="field-name">Язык документа <span class="required">★</span></td><td>Язык, на котором написан документ: китайский, английский, русский или казахский.</td></tr>
+          <tr><td class="field-name">Файл <span class="required">★</span></td><td>Только PDF. Максимальный рекомендуемый размер — 10 МБ.</td></tr>
+          <tr><td class="field-name">Название <span class="optional">необяз.</span></td><td>Название документа, если хотите указать его явно. Иначе будет использован тип документа.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Медиа и отправка на модерацию</div>
+      </div>
+      <div class="info-block">Добавьте фотографии, демонстрирующие производство, команду и продукцию. Качественные фото значительно повышают доверие покупателей.</div>
+
+      <div class="danger-block">
+        <span class="danger-title">⚠️ Без контактных данных на фото</span>
+        На фотографиях <strong>не должно быть</strong> телефонных номеров, email, адресов сайтов,
+        QR-кодов, аккаунтов в мессенджерах (WeChat, QQ, WhatsApp, Telegram), водяных знаков с контактами
+        или рекламы сторонних площадок (Alibaba, 1688, Made-in-China и т. п.).
+        <strong>Логотипы с контактной информацией не принимаются.</strong>
+        Все обращения покупателей вы получаете <strong>только через модераторов B2BWayClub</strong>.
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Поле</th><th>Что вводить</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Тип медиа <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>Фото: производственное здание</code><br>
+              <code>Фото: цех</code><br>
+              <code>Фото: оборудование</code><br>
+              <code>Фото: склад</code><br>
+              <code>Фото: продукция</code><br>
+              <code>Фото: команда</code><br>
+              <code>Фото: упаковка</code><br>
+              <code>Фото: выставки</code>
+            </div>
+          </td></tr>
+          <tr><td class="field-name">Файл <span class="required">★</span></td><td>JPG, PNG, WEBP или PDF. Рекомендуемое разрешение фото — минимум 1200×800 пикселей.</td></tr>
+          <tr><td class="field-name">Подпись <span class="optional">необяз.</span></td><td>Краткое описание фото или видео. Будет отображаться под изображением.</td></tr>
+          <tr><td class="field-name">Порядок <span class="optional">необяз.</span></td><td>Число для сортировки медиа. Чем меньше число, тем раньше отображается. Пример: <em>1, 2, 3...</em></td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-block" style="margin-top: 20px;">
+        <strong>Отправка на модерацию:</strong> после загрузки медиа нажмите кнопку
+        <strong>«Отправить на модерацию»</strong> внизу страницы.
+        Без этого действия профиль останется в статусе «Заполняется» и не будет рассмотрен.
+      </div>
+    </div>
+
+    <!-- What's next -->
+    <div class="what-next">
+      <h3>Что происходит после отправки?</h3>
+      <ol>
+        <li>Профиль получает статус <strong>«На проверке»</strong>. Редактирование временно ограничено.</li>
+        <li>Модератор проверяет все поля, документы и медиа. Срок проверки — обычно 2–5 рабочих дней.</li>
+        <li>Если требуются правки — вы получите уведомление с комментариями. Внесите изменения и отправьте повторно.</li>
+        <li>После одобрения профиль получает статус <strong>«Одобрен»</strong> и становится виден покупателям на платформе.</li>
+      </ol>
+    </div>
+
+    <div class="doc-footer">
+      B2BWayClub Platform &nbsp;·&nbsp; Руководство поставщика v1.0 &nbsp;·&nbsp; 2026
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════ CHINESE ══════════════════════════════ -->
+<div class="lang-section" id="lang-zh">
+
+  <div class="cover">
+    <div class="logo-row">B2BWAYCLUB</div>
+    <h1>供应商注册指南：逐步填写</h1>
+    <div class="sub">中国供应商 → 哈萨克斯坦买家 &nbsp;|&nbsp; 版本 1.0</div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="intro-box">
+      本指南将帮助您在 B2BWayClub 平台完成注册并填写公司资料。
+      注册共分 <strong>6 个步骤</strong>。每个步骤均可保存后稍后继续填写，数据不会丢失。
+      完成所有步骤后，请提交资料进行审核。
+    </div>
+
+    <div class="danger-block top-danger">
+      <span class="danger-title">⚠️ 重要：所有联系仅通过 B2BWayClub 进行</span>
+      买家的所有联系<strong>仅通过 B2BWayClub 审核员转达</strong>。
+      在公开资料中（产品名称、描述、说明文字、照片、视频、Logo 及水印）
+      <strong>严禁</strong>填写或显示电话、邮箱、微信、QQ、WhatsApp、Telegram、
+      网址、二维码或任何其他直接联系方式。
+      违反此规定的资料和素材将<strong>被退回修改或直接驳回</strong>。
+    </div>
+
+    <!-- ── VISUAL FLOW (ZH) ── -->
+    <div class="visual-flow-section">
+      <h2>注册流程</h2>
+      <div class="journey">
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">1</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/signup/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_01_signup.png" alt="注册页面">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                  <div class="ph-label">截图：注册页面</div>
+                  <div class="ph-hint">填写注册表单并创建账号</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">自行完成注册</div>
+                <div class="journey-desc-text">进入注册页面，填写表单：<strong>用户名</strong>、邮箱、公司名称、密码及确认密码。
+                  <br><br>
+                  <strong>用户名</strong>是登录系统时使用的简短名称（例如 <em>shenzhen-tree</em>），与邮箱<strong>不同</strong>，必须唯一。邮箱仅用于接收通知和审核员联系。
+                  <br><br>
+                  提交后账号立即创建，您的邮箱将收到注册确认邮件。</div>
+                <span class="journey-desc-action">→ 点击「提交申请」</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">2</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/login/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_02_login.png" alt="登录页面">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                  <div class="ph-label">截图：登录页面</div>
+                  <div class="ph-hint">输入用户名和密码，点击「登录」</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">登录账户</div>
+                <div class="journey-desc-text">前往登录页面，使用注册时设置的<strong>用户名</strong>和<strong>密码</strong>登录。登录后系统将引导您完成下一步。</div>
+                <span class="journey-desc-action">→ 点击「登录」</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">3</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/agreement/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_03_agreement.png" alt="供应商协议">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <div class="ph-label">截图：供应商协议</div>
+                  <div class="ph-hint">阅读条款并点击「接受协议」</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">接受供应商协议</div>
+                <div class="journey-desc-text">首次登录后将显示<strong>「供应商协议」</strong>页面。请仔细阅读条款——核心规则：<strong>与买家的所有联系仅通过 B2BWayClub 审核员转达</strong>；公开资料字段、文件和照片中不得出现直接联系方式。点击<strong>「接受协议」</strong>按钮——之后将打开资料填写向导。</div>
+                <span class="journey-desc-action">→ 点击「接受协议」</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">4</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/wizard/1/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_04_wizard.png" alt="填写表格">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <div class="ph-label">截图：填写资料（第1–6步）</div>
+                  <div class="ph-hint">填写所有字段后点击「保存并继续」</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">填写供应商资料 — 第1至6步</div>
+                <div class="journey-desc-text">登录后，依次完成6个步骤：基本信息、公开资料、生产与贸易、产品、文件、媒体。每步完成后点击<strong>「保存并继续」</strong>。数据会保存，可随时返回修改。</div>
+                <span class="journey-desc-action">→ 完成第1–6步</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot done">✓</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/wizard/6/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_05_submit.png" alt="提交审核">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  <div class="ph-label">截图：「提交审核」按钮</div>
+                  <div class="ph-hint">在最后一步点击提交按钮</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">提交资料进行审核</div>
+                <div class="journey-desc-text">在第6步上传媒体后，向下滚动并点击<strong>「提交审核」</strong>按钮。这一步是必须的——不点击此按钮，您的资料将不会进入审核流程。</div>
+                <span class="journey-desc-action green">✓ 点击「提交审核」</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot wait">…</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_06_pending_profile.png" alt="等待资料审核">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div class="ph-label">截图：「待审核」状态</div>
+                  <div class="ph-hint">资料正在等待审核员审查</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">等待资料审核</div>
+                <div class="journey-desc-text">资料状态变为<strong>「待审核」</strong>。审核员将检查所有字段、文件和媒体内容。如需修改，您将收到附有审核意见的通知，修改后可重新提交。</div>
+                <span class="journey-desc-action amber">⏳ 审核周期：2–5个工作日</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot finish">★</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/zh_07_approved.png" alt="已批准">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <div class="ph-label">截图：「已批准」状态</div>
+                  <div class="ph-hint">资料对哈萨克斯坦买家可见</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">资料已批准 — 正式上线！</div>
+                <div class="journey-desc-text">批准后，状态变为<strong>「已批准」</strong>。您的资料和产品对哈萨克斯坦买家可见。恭喜您成功入驻 B2BWayClub 平台！</div>
+                <span class="journey-desc-action blue">★ 完成 — 资料对买家可见</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="toc">
+      <h2>目录</h2>
+      <ol>
+        <li>公司基本信息</li>
+        <li>公开资料</li>
+        <li>生产与贸易</li>
+        <li>产品</li>
+        <li>文件</li>
+        <li>媒体与提交审核</li>
+      </ol>
+    </div>
+
+    <div class="flow">
+      <div class="flow-item"><span class="flow-num">1</span><div class="flow-label">基本信息</div></div>
+      <div class="flow-item"><span class="flow-num">2</span><div class="flow-label">公开资料</div></div>
+      <div class="flow-item"><span class="flow-num">3</span><div class="flow-label">生产与贸易</div></div>
+      <div class="flow-item"><span class="flow-num">4</span><div class="flow-label">产品</div></div>
+      <div class="flow-item"><span class="flow-num">5</span><div class="flow-label">文件</div></div>
+      <div class="flow-item"><span class="flow-num">6</span><div class="flow-label">媒体 → 提交</div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">公司基本信息</div>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>填写说明</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">中文名称 <span class="required">★</span></td><td>公司官方中文名称。示例：<em>树木科技有限公司</em></td></tr>
+          <tr><td class="field-name">英文名称 <span class="required">★</span></td><td>公司官方英文名称。示例：<em>Tree Technology Co., Ltd.</em></td></tr>
+          <tr><td class="field-name">公司全称 <span class="required">★</span></td><td>营业执照上的完整公司名称，包含公司类型后缀。</td></tr>
+          <tr><td class="field-name">注册号码 <span class="optional">选填</span></td><td>工商注册号或统一社会信用代码。</td></tr>
+          <tr><td class="field-name">国家 <span class="required">★</span></td><td>公司注册国家。大多数供应商填写：中国。</td></tr>
+          <tr><td class="field-name">城市 / 省份 <span class="required">★</span></td><td>公司所在城市及省份。示例：<em>广东省深圳市</em></td></tr>
+          <tr><td class="field-name">生产地址 <span class="optional">选填</span></td><td>实际生产地址（如与注册地址不同）。</td></tr>
+          <tr><td class="field-name">成立年份 <span class="optional">选填</span></td><td>公司成立年份，仅填数字。示例：<em>2005</em></td></tr>
+          <tr><td class="field-name">公司类型 <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>制造商</code> — 自主生产产品<br>
+              <code>贸易公司</code> — 转售产品<br>
+              <code>OEM</code> — 按客户设计/品牌生产<br>
+              <code>ODM</code> — 设计并按需生产<br>
+              <code>品牌</code> — 拥有自有商标
+            </div>
+          </td></tr>
+          <tr><td class="field-name">填写语言 <span class="required">★</span></td><td>您填写表格所使用的语言（中文、英文、俄文、哈文）。系统将以此语言为原文进行自动翻译。</td></tr>
+          <tr><td class="field-name">联系电话 <span class="moderator-only">仅审核员可见</span></td><td>联系人电话，供审核员联系使用，不对外公开。</td></tr>
+          <tr><td class="field-name">微信 / Tencent ID <span class="moderator-only">仅审核员可见</span></td><td>微信或腾讯账号，供审核员快速联系，不对外公开。</td></tr>
+          <tr><td class="field-name">电子邮件 <span class="moderator-only">仅审核员可见</span></td><td>联系人邮箱，仅供审核员使用，不对外公开。</td></tr>
+          <tr><td class="field-name">主类别 <span class="required">★</span></td><td>从列表中选择一个主要产品类别，这将决定可选择的子类别范围。</td></tr>
+          <tr><td class="field-name">子类别 <span class="required">★</span></td><td>在主类别范围内选择 1–5 个子类别。此处选择的子类别在添加产品时可用。</td></tr>
+          <tr><td class="field-name">未找到合适类别？ <span class="optional">选填</span></td><td>用文字描述您的产品类别，审核员将协助添加合适的类别。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">公开资料</div>
+      </div>
+      <div class="info-block">此步骤中的信息将在平台上对买家公开展示。请使用您选择的填写语言填写，系统将自动翻译。</div>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>填写说明</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">简短描述 <span class="required">★</span></td><td>1–3 句话介绍公司：生产什么、位于哪里、核心优势。将显示在供应商列表中。</td></tr>
+          <tr><td class="field-name">详细描述 <span class="required">★</span></td><td>公司详细介绍：历史、专业领域、销售市场、竞争优势。建议 150–400 字。</td></tr>
+          <tr><td class="field-name">公司标志 <span class="optional">选填</span></td><td>公司 Logo，格式 PNG 或 JPG。建议尺寸：最小 300×300 像素，正方形。</td></tr>
+          <tr><td class="field-name">官方网站 <span class="optional">选填</span></td><td>公司官方网站地址，以 <em>https://</em> 开头。</td></tr>
+          <tr><td class="field-name">主要产品方向 <span class="required">★</span></td><td>列出您的主要产品类型和方向，可多行填写。</td></tr>
+          <tr><td class="field-name">哈萨克斯坦市场前5产品 <span class="required">★</span></td><td>列出5款您认为最适合哈萨克斯坦市场的产品，请考虑当地需求和气候特点。</td></tr>
+          <tr><td class="field-name">平台目标 <span class="required">★</span></td><td>
+            <div class="choices-list">选择所有适用项：<br>
+              <code>寻找经销商</code> &nbsp; <code>寻找批发买家</code><br>
+              <code>寻找OEM订单</code> &nbsp; <code>寻找本地化合作伙伴</code><br>
+              <code>寻找服务合作伙伴</code>
+            </div>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">生产与贸易</div>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>填写说明</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">员工人数 <span class="optional">选填</span></td><td><code>&lt;10</code> &nbsp; <code>10–50</code> &nbsp; <code>50–200</code> &nbsp; <code>200–500</code> &nbsp; <code>500–1000</code> &nbsp; <code>1000+</code></td></tr>
+          <tr><td class="field-name">年营业额 <span class="optional">选填</span></td><td><code>&lt;100万美元</code> &nbsp; <code>100–500万</code> &nbsp; <code>500–2000万</code> &nbsp; <code>2000万–1亿</code> &nbsp; <code>1亿+</code></td></tr>
+          <tr><td class="field-name">生产面积（㎡） <span class="optional">选填</span></td><td>生产厂房总面积（平方米），仅填数字。</td></tr>
+          <tr><td class="field-name">生产能力 <span class="optional">选填</span></td><td>描述主要产品的月/年产量。</td></tr>
+          <tr><td class="field-name">设备与技术 <span class="optional">选填</span></td><td>描述主要生产设备、使用技术和自动化程度。</td></tr>
+          <tr><td class="field-name">生产线数量 <span class="optional">选填</span></td><td>生产线数量，仅填数字。</td></tr>
+          <tr><td class="field-name">提供OEM服务 <span class="optional">选填</span></td><td>如可按客户品牌/设计生产，请勾选。</td></tr>
+          <tr><td class="field-name">提供ODM服务 <span class="optional">选填</span></td><td>如可按客户技术要求设计并生产，请勾选。</td></tr>
+          <tr><td class="field-name">OEM最小起订量 <span class="optional">选填</span></td><td>OEM订单的最小起订数量（单位件数）。</td></tr>
+          <tr><td class="field-name">起订量单位 <span class="optional">选填</span></td><td>最小起订量的计量单位，如：件、千克、套等。</td></tr>
+          <tr><td class="field-name">最低订单金额 <span class="optional">选填</span></td><td>单次订单最低金额，仅填数字。</td></tr>
+          <tr><td class="field-name">货币 <span class="optional">选填</span></td><td><code>人民币（CNY）</code> &nbsp; <code>美元（USD）</code> &nbsp; <code>欧元（EUR）</code></td></tr>
+          <tr><td class="field-name">付款方式 <span class="optional">选填</span></td><td>选择所有接受的付款方式：<br><code>电汇（T/T）</code> &nbsp; <code>信用证（L/C）</code> &nbsp; <code>支付宝</code> &nbsp; <code>PayPal</code> &nbsp; <code>西联汇款</code> &nbsp; <code>担保支付（Escrow）</code></td></tr>
+          <tr><td class="field-name">预付款比例 <span class="optional">选填</span></td><td>预付款百分比。示例：<em>30</em>（表示30%）</td></tr>
+          <tr><td class="field-name">交货条款 <span class="optional">选填</span></td><td>选择支持的国际贸易术语：<br><code>EXW</code>（工厂交货）&nbsp; <code>FOB</code>（船上交货）<br><code>CIF</code>（含保险费和运费）&nbsp; <code>DDP</code>（完税后交货）</td></tr>
+          <tr><td class="field-name">装运港口 <span class="optional">选填</span></td><td>主要使用的出货港口。示例：<em>广州港、上海港</em></td></tr>
+          <tr><td class="field-name">可送货至哈萨克斯坦 <span class="optional">选填</span></td><td>如可直接配送到哈萨克斯坦地址，请勾选。</td></tr>
+          <tr><td class="field-name">在独联体有仓库 <span class="optional">选填</span></td><td>如在独联体国家设有仓库，请勾选。</td></tr>
+          <tr><td class="field-name">独联体仓库地址 <span class="optional">选填</span></td><td>如有仓库，填写所在城市和国家。</td></tr>
+          <tr><td class="field-name">哈萨克斯坦经销商 <span class="optional">选填</span></td><td>如在哈萨克斯坦设有官方经销商，请勾选。</td></tr>
+          <tr><td class="field-name">提供保修和服务 <span class="optional">选填</span></td><td>如提供产品保修服务，请勾选。</td></tr>
+          <tr><td class="field-name">提供备用零件 <span class="optional">选填</span></td><td>如有备用零件供应，请勾选。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">产品</div>
+      </div>
+      <div class="info-block">每个产品单独添加。点击"保存并继续"后，该产品将被保存，表格将重置以便添加下一个产品。至少需要添加 1 个产品。</div>
+
+      <div class="danger-block">
+        <span class="danger-title">⚠️ 产品信息中不得含联系方式</span>
+        在产品的<strong>名称、描述、技术规格和包装说明</strong>中
+        <strong>严禁</strong>填写电话、邮箱、微信、QQ、WhatsApp、Telegram、
+        网址或二维码等任何联系方式。
+        与买家的所有联系<strong>仅通过 B2BWayClub 审核员</strong>进行。
+        含直接联系方式的产品将被退回修改。
+      </div>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>填写说明</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">产品名称 <span class="required">★</span></td><td>产品或系列的官方名称。示例：<em>A200系列工业LED灯具</em></td></tr>
+          <tr><td class="field-name">主类别</td><td>自动从第1步读取，不可编辑。</td></tr>
+          <tr><td class="field-name">子类别 <span class="required">★</span></td><td>从第1步选择的子类别中选择。如没有合适的，请勾选下方复选框。</td></tr>
+          <tr><td class="field-name">我的子类别不在列表中 <span class="optional">选填</span></td><td>勾选后，子类别下拉框隐藏，出现文本框供您描述子类别。</td></tr>
+          <tr><td class="field-name">产品描述 <span class="required">★</span></td><td>详细描述：用途、应用场景、特点。建议 50–200 字。</td></tr>
+          <tr><td class="field-name">技术规格 <span class="optional">选填</span></td><td>技术参数：功率、尺寸、材质、执行标准等。</td></tr>
+          <tr><td class="field-name">最小起订量 <span class="optional">选填</span></td><td>该产品的最小订购数量，加单位（件、千克等）。</td></tr>
+          <tr><td class="field-name">最低订单金额 <span class="optional">选填</span></td><td>该产品单次订单的最低金额。</td></tr>
+          <tr><td class="field-name">货币 <span class="optional">选填</span></td><td><code>CNY</code> &nbsp; <code>USD</code> &nbsp; <code>EUR</code></td></tr>
+          <tr><td class="field-name">交货条款 <span class="optional">选填</span></td><td><code>EXW</code> &nbsp; <code>FOB</code> &nbsp; <code>CIF</code> &nbsp; <code>DDP</code></td></tr>
+          <tr><td class="field-name">支持OEM <span class="optional">选填</span></td><td>如该产品支持OEM定制，请勾选。</td></tr>
+          <tr><td class="field-name">支持ODM <span class="optional">选填</span></td><td>如该产品支持ODM定制，请勾选。</td></tr>
+          <tr><td class="field-name">包装选项 <span class="optional">选填</span></td><td>描述可用的包装方式：箱体尺寸、重量、每箱数量等。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">文件</div>
+      </div>
+      <div class="info-block">上传证明公司资质的文件，每个文件单独上传。建议至少上传营业执照。</div>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>填写说明</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">文件类型 <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>营业执照</code> &nbsp; <code>出口许可证</code><br>
+              <code>质量认证</code>（ISO等）&nbsp; <code>产品认证</code><br>
+              <code>产品目录</code> &nbsp; <code>价格表</code><br>
+              <code>公司介绍</code> &nbsp; <code>宣传册</code><br>
+              <code>包装样本</code> &nbsp; <code>推荐信</code>
+            </div>
+          </td></tr>
+          <tr><td class="field-name">可见性 <span class="required">★</span></td><td>
+            <code>公开</code> — 对买家可见<br>
+            <code>仅内部</code> — 仅审核员可见<br>
+            <code>受限</code> — 按需申请
+          </td></tr>
+          <tr><td class="field-name">文件语言 <span class="required">★</span></td><td>文件所使用的语言：中文、英文、俄文或哈文。</td></tr>
+          <tr><td class="field-name">文件 <span class="required">★</span></td><td>仅支持 PDF 格式。建议每个文件不超过 10MB。</td></tr>
+          <tr><td class="field-name">文件名称 <span class="optional">选填</span></td><td>自定义文件名称，不填则使用文件类型名称。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">媒体与提交审核</div>
+      </div>
+      <div class="info-block">上传展示生产环境、团队和产品的照片。高质量的照片可大幅提升买家信任度。</div>
+
+      <div class="danger-block">
+        <span class="danger-title">⚠️ 照片中不得含联系方式</span>
+        上传的照片中<strong>不得出现</strong>电话、邮箱、网址、二维码、
+        微信/QQ/WhatsApp/Telegram 等社交账号、含联系方式的水印或
+        第三方平台广告（如阿里巴巴、1688、Made-in-China 等）。
+        <strong>含联系信息的 Logo 一律不予接受。</strong>
+        买家的所有询盘<strong>仅通过 B2BWayClub 审核员</strong>转达给您。
+      </div>
+      <table class="field-table">
+        <thead><tr><th>字段</th><th>填写说明</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">媒体类型 <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>照片：生产厂房</code> &nbsp; <code>照片：车间</code><br>
+              <code>照片：设备</code> &nbsp; <code>照片：仓库</code><br>
+              <code>照片：产品</code> &nbsp; <code>照片：团队</code><br>
+              <code>照片：包装</code> &nbsp; <code>照片：展会</code>
+            </div>
+          </td></tr>
+          <tr><td class="field-name">文件 <span class="required">★</span></td><td>支持 JPG、PNG、WEBP 或 PDF。建议照片分辨率不低于 1200×800 像素。</td></tr>
+          <tr><td class="field-name">说明 <span class="optional">选填</span></td><td>照片或视频的简短描述，将显示在图片下方。</td></tr>
+          <tr><td class="field-name">排序 <span class="optional">选填</span></td><td>控制媒体显示顺序的数字，数字越小越靠前。示例：<em>1, 2, 3…</em></td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-block" style="margin-top: 20px;">
+        <strong>提交审核：</strong>上传媒体后，请点击页面底部的
+        <strong>「提交审核」</strong>按钮。
+        不点击此按钮，您的资料将保持"填写中"状态，不会被审核。
+      </div>
+    </div>
+
+    <div class="what-next">
+      <h3>提交后会发生什么？</h3>
+      <ol>
+        <li>资料状态变为<strong>「待审核」</strong>，暂时限制编辑。</li>
+        <li>审核员将审查所有填写内容、文件和媒体。通常审核时间为 2–5 个工作日。</li>
+        <li>如需修改，您将收到附有审核意见的通知，请修改后重新提交。</li>
+        <li>审核通过后，资料状态变为<strong>「已批准」</strong>，将在平台上对买家公开展示。</li>
+      </ol>
+    </div>
+
+    <div class="doc-footer">
+      B2BWayClub Platform &nbsp;·&nbsp; 供应商指南 v1.0 &nbsp;·&nbsp; 2026
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════ ENGLISH ══════════════════════════════ -->
+<div class="lang-section" id="lang-en">
+
+  <div class="cover">
+    <div class="logo-row">B2BWAYCLUB</div>
+    <h1>Supplier Registration Guide: Step by Step</h1>
+    <div class="sub">Chinese Suppliers → Kazakh Buyers &nbsp;|&nbsp; Version 1.0</div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="intro-box">
+      This guide walks you through registering on the B2BWayClub platform and completing your company profile.
+      Registration has <strong>6 steps</strong>. You can save at any step and return later — your data is preserved.
+      After completing all steps, submit your profile for moderation review.
+    </div>
+
+    <div class="danger-block top-danger">
+      <span class="danger-title">⚠️ Important: all contact goes through B2BWayClub only</span>
+      All buyer enquiries are routed <strong>exclusively through B2BWayClub moderators</strong>.
+      It is <strong>strictly forbidden</strong> to publish phone numbers, emails,
+      WeChat, QQ, WhatsApp, Telegram IDs, website URLs, QR codes or any other direct contact details
+      anywhere in your public profile — in product titles and descriptions, captions,
+      photos and videos, logos or watermarks.
+      Profiles and materials violating this rule will be
+      <strong>returned for revision or rejected</strong>.
+    </div>
+
+    <!-- ── VISUAL FLOW (EN) ── -->
+    <div class="visual-flow-section">
+      <h2>How Registration Works</h2>
+      <div class="journey">
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">1</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/signup/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_01_signup.png" alt="Sign up page">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                  <div class="ph-label">Screenshot: sign-up page</div>
+                  <div class="ph-hint">Fill in the form and create your account</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Register yourself</div>
+                <div class="journey-desc-text">Go to the sign-up page and fill in the form: <strong>Username</strong>, Email, Company name, Password, and Confirm password.
+                  <br><br>
+                  <strong>Username</strong> is a short name you will use to sign in (for example, <em>shenzhen-tree</em>). It is <strong>different from your email</strong> and must be unique. Email is used separately — for notifications and moderator contact.
+                  <br><br>
+                  After submitting, your account is created immediately. You will receive a registration confirmation email.</div>
+                <span class="journey-desc-action">→ Click "Submit registration"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">2</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/login/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_02_login.png" alt="Sign-in page">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                  <div class="ph-label">Screenshot: sign-in page</div>
+                  <div class="ph-hint">Enter your username and password, click "Sign in"</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Sign in to the platform</div>
+                <div class="journey-desc-text">Open the sign-in page and log in with the <strong>username</strong> and <strong>password</strong> you set during registration. After signing in, the platform will guide you to the next step automatically.</div>
+                <span class="journey-desc-action">→ Click "Sign in"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">3</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/agreement/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_03_agreement.png" alt="Supplier agreement">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <div class="ph-label">Screenshot: supplier agreement</div>
+                  <div class="ph-hint">Read it and click "Accept agreement"</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Accept the supplier agreement</div>
+                <div class="journey-desc-text">On your first sign-in, the <strong>"Supplier Agreement"</strong> page opens. Read it carefully — the core rule: <strong>all communication with buyers must go through B2BWayClub moderators</strong>; direct contacts must not appear in public profile fields, documents, or photos. Click <strong>"Accept agreement"</strong> — the profile wizard will then open.</div>
+                <span class="journey-desc-action">→ Click "Accept agreement"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot">4</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/wizard/1/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_04_wizard.png" alt="Wizard steps">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <div class="ph-label">Screenshot: profile form (steps 1–6)</div>
+                  <div class="ph-hint">Fill in all fields and click "Save and continue"</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Complete the supplier profile — steps 1–6</div>
+                <div class="journey-desc-text">After signing in, work through all 6 steps: basic info, public profile, production &amp; trade, products, documents, media. Click <strong>"Save and continue"</strong> on each step. Data is saved — you can return and edit at any time.</div>
+                <span class="journey-desc-action">→ Complete steps 1–6</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot done">✓</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/wizard/6/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_05_submit.png" alt="Submit for review">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                  <div class="ph-label">Screenshot: "Submit for moderation" button</div>
+                  <div class="ph-hint">Click the submit button at the bottom of step 6</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Submit your profile for review</div>
+                <div class="journey-desc-text">After uploading media on step 6, scroll down and click <strong>"Submit for moderation"</strong>. This is mandatory — without this your profile stays in "Filling" status and will not be reviewed.</div>
+                <span class="journey-desc-action green">✓ Click "Submit for moderation"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot wait">…</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_06_pending_profile.png" alt="Pending profile review">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div class="ph-label">Screenshot: "Pending review" status</div>
+                  <div class="ph-hint">Your profile is awaiting moderator review</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Wait for profile review</div>
+                <div class="journey-desc-text">Your profile status changes to <strong>"Pending review"</strong>. A moderator checks all fields, documents, and media. If changes are needed you will receive a notification with specific comments and can resubmit.</div>
+                <span class="journey-desc-action amber">⏳ Review time: 2–5 business days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-item">
+          <div class="journey-spine"><div class="journey-dot finish">★</div><div class="journey-line"></div></div>
+          <div class="journey-card">
+            <div class="journey-card-inner">
+              <div class="browser-bar">
+                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
+                <div class="browser-url">b2bwayclub.com/supplier/</div>
+              </div>
+              <div class="screenshot-area">
+                <img src="screenshots/en_07_approved.png" alt="Approved">
+                <div class="screenshot-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9aa" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <div class="ph-label">Screenshot: "Approved" status</div>
+                  <div class="ph-hint">Your profile is visible to Kazakh buyers</div>
+                </div>
+              </div>
+              <div class="journey-desc">
+                <div class="journey-desc-title">Approved — you're live on the platform!</div>
+                <div class="journey-desc-text">Once approved, your status changes to <strong>"Approved"</strong>. Your profile and products are visible to buyers in Kazakhstan. Welcome to B2BWayClub!</div>
+                <span class="journey-desc-action blue">★ Done — profile visible to buyers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="toc">
+      <h2>Contents</h2>
+      <ol>
+        <li>Basic Company Information</li>
+        <li>Public Profile</li>
+        <li>Production &amp; Trade</li>
+        <li>Products</li>
+        <li>Documents</li>
+        <li>Media &amp; Submit for Review</li>
+      </ol>
+    </div>
+
+    <div class="flow">
+      <div class="flow-item"><span class="flow-num">1</span><div class="flow-label">Basic Info</div></div>
+      <div class="flow-item"><span class="flow-num">2</span><div class="flow-label">Public Profile</div></div>
+      <div class="flow-item"><span class="flow-num">3</span><div class="flow-label">Production</div></div>
+      <div class="flow-item"><span class="flow-num">4</span><div class="flow-label">Products</div></div>
+      <div class="flow-item"><span class="flow-num">5</span><div class="flow-label">Documents</div></div>
+      <div class="flow-item"><span class="flow-num">6</span><div class="flow-label">Media → Submit</div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">1</div>
+        <div class="step-title">Basic Company Information</div>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Chinese name <span class="required">★</span></td><td>Official company name in Chinese. Example: <em>树木科技有限公司</em></td></tr>
+          <tr><td class="field-name">English name <span class="required">★</span></td><td>Official company name in English. Example: <em>Tree Technology Co., Ltd.</em></td></tr>
+          <tr><td class="field-name">Full legal name <span class="required">★</span></td><td>Complete legal name as it appears in registration documents, including entity type suffix.</td></tr>
+          <tr><td class="field-name">Registration number <span class="optional">optional</span></td><td>Company registration number from your business license or certificate of incorporation.</td></tr>
+          <tr><td class="field-name">Country <span class="required">★</span></td><td>Country of registration. Most suppliers enter: China.</td></tr>
+          <tr><td class="field-name">City / province <span class="required">★</span></td><td>City and province where the company is located. Example: <em>Shenzhen, Guangdong</em></td></tr>
+          <tr><td class="field-name">Production address <span class="optional">optional</span></td><td>Physical production site address if different from the registered address.</td></tr>
+          <tr><td class="field-name">Founded year <span class="optional">optional</span></td><td>Year the company was established. Numbers only. Example: <em>2005</em></td></tr>
+          <tr><td class="field-name">Company type <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>Manufacturer</code> — produces goods independently<br>
+              <code>Trading Company</code> — resells products<br>
+              <code>OEM</code> — produces under customer's brand/design<br>
+              <code>ODM</code> — designs and produces on demand<br>
+              <code>Brand</code> — owns a trademark
+            </div>
+          </td></tr>
+          <tr><td class="field-name">Filling language <span class="required">★</span></td><td>Language you are using to fill in this form (Chinese, English, Russian, Kazakh). This determines the source language for auto-translation.</td></tr>
+          <tr><td class="field-name">Representative phone <span class="moderator-only">moderators only</span></td><td>Phone number of the contact person for the moderator. Not published on the platform.</td></tr>
+          <tr><td class="field-name">WeChat / Tencent ID <span class="moderator-only">moderators only</span></td><td>WeChat or Tencent ID for quick moderator contact. Not published.</td></tr>
+          <tr><td class="field-name">Email <span class="moderator-only">moderators only</span></td><td>Contact email used by the moderator. Not published.</td></tr>
+          <tr><td class="field-name">Main category <span class="required">★</span></td><td>Choose one main product category from the list. This determines available subcategories.</td></tr>
+          <tr><td class="field-name">Subcategories <span class="required">★</span></td><td>Choose 1–5 subcategories within the selected main category. These subcategories are also available when adding products.</td></tr>
+          <tr><td class="field-name">Category not found? <span class="optional">optional</span></td><td>Describe your product category in free text. A moderator will add the appropriate category for you.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">2</div>
+        <div class="step-title">Public Profile</div>
+      </div>
+      <div class="info-block">Information in this step will be visible to buyers on the platform. Fill in your chosen filling language — the platform will auto-translate.</div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Short description <span class="required">★</span></td><td>1–3 sentences about your company: what you produce, where you are, key strengths. Shown in the supplier listing.</td></tr>
+          <tr><td class="field-name">Detailed description <span class="required">★</span></td><td>Full company description: history, specialization, markets, competitive advantages. Recommended length: 150–400 words.</td></tr>
+          <tr><td class="field-name">Logo <span class="optional">optional</span></td><td>Company logo in PNG or JPG format. Recommended size: at least 300×300 pixels, square.</td></tr>
+          <tr><td class="field-name">Website <span class="optional">optional</span></td><td>Official company website URL. Must start with <em>https://</em></td></tr>
+          <tr><td class="field-name">Main product directions <span class="required">★</span></td><td>List the main types of products you manufacture or sell. Multiple lines are fine.</td></tr>
+          <tr><td class="field-name">Top 5 products for Kazakhstan <span class="required">★</span></td><td>List 5 products you believe are most suited to the Kazakh market. Consider local demand and climate conditions.</td></tr>
+          <tr><td class="field-name">Platform goals <span class="required">★</span></td><td>
+            <div class="choices-list">Select all that apply:<br>
+              <code>Find a distributor</code> &nbsp; <code>Find wholesale buyers</code><br>
+              <code>Find OEM orders</code> &nbsp; <code>Find a localization partner</code><br>
+              <code>Find a service partner</code>
+            </div>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">3</div>
+        <div class="step-title">Production &amp; Trade</div>
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Employee count <span class="optional">optional</span></td><td><code>&lt;10</code> &nbsp; <code>10–50</code> &nbsp; <code>50–200</code> &nbsp; <code>200–500</code> &nbsp; <code>500–1000</code> &nbsp; <code>1000+</code></td></tr>
+          <tr><td class="field-name">Annual revenue <span class="optional">optional</span></td><td><code>&lt;1M USD</code> &nbsp; <code>1–5M</code> &nbsp; <code>5–20M</code> &nbsp; <code>20–100M</code> &nbsp; <code>100M+</code></td></tr>
+          <tr><td class="field-name">Production area (m²) <span class="optional">optional</span></td><td>Total production floor space in square metres. Numbers only.</td></tr>
+          <tr><td class="field-name">Production capacity <span class="optional">optional</span></td><td>Description of production volumes: units per month/year for main product lines.</td></tr>
+          <tr><td class="field-name">Equipment &amp; technologies <span class="optional">optional</span></td><td>Description of key production equipment, technologies used, and degree of automation.</td></tr>
+          <tr><td class="field-name">Production lines count <span class="optional">optional</span></td><td>Number of production lines. Numbers only.</td></tr>
+          <tr><td class="field-name">OEM available <span class="optional">optional</span></td><td>Check if you can produce goods under a customer's brand or design.</td></tr>
+          <tr><td class="field-name">ODM available <span class="optional">optional</span></td><td>Check if you can design and manufacture products to a customer's specification.</td></tr>
+          <tr><td class="field-name">OEM MOQ <span class="optional">optional</span></td><td>Minimum order quantity for OEM production (in units).</td></tr>
+          <tr><td class="field-name">MOQ units <span class="optional">optional</span></td><td>Unit of measurement for minimum order: pcs, kg, set, etc.</td></tr>
+          <tr><td class="field-name">Minimum order amount <span class="optional">optional</span></td><td>Minimum order value in the selected currency. Numbers only.</td></tr>
+          <tr><td class="field-name">Currency <span class="optional">optional</span></td><td><code>CNY</code> &nbsp; <code>USD</code> &nbsp; <code>EUR</code></td></tr>
+          <tr><td class="field-name">Payment terms <span class="optional">optional</span></td><td>Check all accepted payment methods:<br><code>T/T</code> &nbsp; <code>L/C</code> &nbsp; <code>Alipay</code> &nbsp; <code>PayPal</code> &nbsp; <code>Western Union</code> &nbsp; <code>Escrow</code></td></tr>
+          <tr><td class="field-name">Prepayment % <span class="optional">optional</span></td><td>Required prepayment as a percentage. Example: <em>30</em> means 30%</td></tr>
+          <tr><td class="field-name">Delivery terms <span class="optional">optional</span></td><td>Check all supported Incoterms:<br><code>EXW</code> (ex works) &nbsp; <code>FOB</code> (free on board)<br><code>CIF</code> (cost, insurance &amp; freight) &nbsp; <code>DDP</code> (delivered duty paid)</td></tr>
+          <tr><td class="field-name">Shipping ports <span class="optional">optional</span></td><td>Ports typically used for shipment. Example: <em>Guangzhou, Shanghai</em></td></tr>
+          <tr><td class="field-name">Delivery to Kazakhstan <span class="optional">optional</span></td><td>Check if you can deliver directly to addresses in Kazakhstan.</td></tr>
+          <tr><td class="field-name">Warehouse in CIS <span class="optional">optional</span></td><td>Check if you have a warehouse in a CIS country.</td></tr>
+          <tr><td class="field-name">CIS warehouse location <span class="optional">optional</span></td><td>City and country of the CIS warehouse, if applicable.</td></tr>
+          <tr><td class="field-name">Dealer in Kazakhstan <span class="optional">optional</span></td><td>Check if you have an official dealer or distributor in Kazakhstan.</td></tr>
+          <tr><td class="field-name">Warranty &amp; service <span class="optional">optional</span></td><td>Check if you provide warranty service for your products.</td></tr>
+          <tr><td class="field-name">Spare parts <span class="optional">optional</span></td><td>Check if spare parts are available for your products.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">4</div>
+        <div class="step-title">Products</div>
+      </div>
+      <div class="info-block">Add each product separately. Click "Save and continue" to save the product — the form resets for the next one. Add at least 1 product.</div>
+
+      <div class="danger-block">
+        <span class="danger-title">⚠️ No contact details in product information</span>
+        Product <strong>titles, descriptions, specifications, and packaging notes</strong>
+        <strong>must not contain</strong> phone numbers, emails, WeChat, QQ, WhatsApp, Telegram,
+        messenger IDs, website URLs, or QR codes.
+        All buyer communication is handled <strong>exclusively through B2BWayClub moderators</strong>.
+        Products containing direct contact details will be returned for revision.
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Product title <span class="required">★</span></td><td>Official product or product line name. Example: <em>A200 Series Industrial LED Fixture</em></td></tr>
+          <tr><td class="field-name">Main category</td><td>Populated automatically from step 1. Cannot be edited here.</td></tr>
+          <tr><td class="field-name">Subcategory <span class="required">★</span></td><td>Choose a subcategory from those added in step 1. If none fit, check the box below.</td></tr>
+          <tr><td class="field-name">My subcategory is not in the list <span class="optional">optional</span></td><td>Check to hide the subcategory dropdown and enter a custom subcategory description instead.</td></tr>
+          <tr><td class="field-name">Product description <span class="required">★</span></td><td>Detailed description: purpose, use cases, key features. Recommended: 50–200 words.</td></tr>
+          <tr><td class="field-name">Specifications <span class="optional">optional</span></td><td>Technical parameters: power, dimensions, material, standards, certifications.</td></tr>
+          <tr><td class="field-name">MOQ <span class="optional">optional</span></td><td>Minimum order quantity for this product, with unit (pcs, kg, etc.).</td></tr>
+          <tr><td class="field-name">Minimum order amount <span class="optional">optional</span></td><td>Minimum order value for this specific product.</td></tr>
+          <tr><td class="field-name">Currency <span class="optional">optional</span></td><td><code>CNY</code> &nbsp; <code>USD</code> &nbsp; <code>EUR</code></td></tr>
+          <tr><td class="field-name">Delivery terms <span class="optional">optional</span></td><td><code>EXW</code> &nbsp; <code>FOB</code> &nbsp; <code>CIF</code> &nbsp; <code>DDP</code></td></tr>
+          <tr><td class="field-name">OEM available <span class="optional">optional</span></td><td>Check if this product is available for OEM customisation.</td></tr>
+          <tr><td class="field-name">ODM available <span class="optional">optional</span></td><td>Check if this product is available for ODM customisation.</td></tr>
+          <tr><td class="field-name">Packaging options <span class="optional">optional</span></td><td>Available packaging formats: box dimensions, weight, units per box, etc.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">5</div>
+        <div class="step-title">Documents</div>
+      </div>
+      <div class="info-block">Upload documents that verify your company's credentials. Each document is uploaded individually. We recommend uploading at least a business license.</div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Document type <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>Business License</code> — primary registration document<br>
+              <code>Export License</code> — permit for export operations<br>
+              <code>Quality Certificate</code> — ISO, CE, and similar<br>
+              <code>Product Certificate</code> — certificate for a specific product<br>
+              <code>Product Catalog</code> — general or category-specific<br>
+              <code>Price List</code> — pricing table<br>
+              <code>Company Presentation</code> — presentation about the company<br>
+              <code>Brochure</code> — marketing material<br>
+              <code>Packaging Samples</code> — descriptions of packaging<br>
+              <code>Recommendation Letter</code>
+            </div>
+          </td></tr>
+          <tr><td class="field-name">Visibility <span class="required">★</span></td><td>
+            <code>Public</code> — visible to buyers<br>
+            <code>Internal only</code> — visible to moderators only<br>
+            <code>Restricted</code> — available on request
+          </td></tr>
+          <tr><td class="field-name">Document language <span class="required">★</span></td><td>Language the document is written in: Chinese, English, Russian, or Kazakh.</td></tr>
+          <tr><td class="field-name">File <span class="required">★</span></td><td>PDF only. Recommended max size: 10 MB per file.</td></tr>
+          <tr><td class="field-name">Title <span class="optional">optional</span></td><td>Custom document name. If left blank, the document type name is used.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-num">6</div>
+        <div class="step-title">Media &amp; Submit for Review</div>
+      </div>
+      <div class="info-block">Add photos showcasing your facilities, team, and products. High-quality photos significantly increase buyer trust.</div>
+
+      <div class="danger-block">
+        <span class="danger-title">⚠️ No contact details in photos</span>
+        Your photos <strong>must not show</strong> phone numbers, emails, website URLs,
+        QR codes, messenger handles (WeChat, QQ, WhatsApp, Telegram), watermarks containing contacts,
+        or advertisements for third-party marketplaces (Alibaba, 1688, Made-in-China, etc.).
+        <strong>Logos with embedded contact information are not accepted.</strong>
+        All buyer enquiries reach you <strong>only through B2BWayClub moderators</strong>.
+      </div>
+      <table class="field-table">
+        <thead><tr><th>Field</th><th>What to enter</th></tr></thead>
+        <tbody>
+          <tr><td class="field-name">Media type <span class="required">★</span></td><td>
+            <div class="choices-list">
+              <code>Photo: production building</code> &nbsp; <code>Photo: workshop</code><br>
+              <code>Photo: equipment</code> &nbsp; <code>Photo: warehouse</code><br>
+              <code>Photo: products</code> &nbsp; <code>Photo: team</code><br>
+              <code>Photo: packaging</code> &nbsp; <code>Photo: exhibitions</code>
+            </div>
+          </td></tr>
+          <tr><td class="field-name">File <span class="required">★</span></td><td>JPG, PNG, WEBP, or PDF. Recommended photo resolution at least 1200×800 px.</td></tr>
+          <tr><td class="field-name">Caption <span class="optional">optional</span></td><td>Short description of the photo or video. Will be shown below the image.</td></tr>
+          <tr><td class="field-name">Order <span class="optional">optional</span></td><td>Number for sorting media. Lower numbers appear first. Example: <em>1, 2, 3…</em></td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-block" style="margin-top: 20px;">
+        <strong>Submitting for review:</strong> after uploading your media, click the
+        <strong>"Submit for moderation"</strong> button at the bottom of the page.
+        Without this action, your profile stays in "Filling" status and will not be reviewed.
+      </div>
+    </div>
+
+    <div class="what-next">
+      <h3>What happens after submission?</h3>
+      <ol>
+        <li>Your profile status changes to <strong>"Pending review"</strong>. Editing is temporarily restricted.</li>
+        <li>A moderator reviews all fields, documents, and media. Typical review time: 2–5 business days.</li>
+        <li>If changes are needed, you will receive a notification with comments. Make corrections and resubmit.</li>
+        <li>Once approved, your profile status becomes <strong>"Approved"</strong> and it becomes visible to buyers on the platform.</li>
+      </ol>
+    </div>
+
+    <div class="doc-footer">
+      B2BWayClub Platform &nbsp;·&nbsp; Supplier Guide v1.0 &nbsp;·&nbsp; 2026
+    </div>
+  </div>
+</div>
+
+<script>
+function showLang(lang) {
+  document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('lang-' + lang).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
